@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ReportDataSet" targetNamespace="http://tempuri.org/ReportDataSet.xsd" xmlns:mstns="http://tempuri.org/ReportDataSet.xsd" xmlns="http://tempuri.org/ReportDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ReportDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="ReportDataSet" msprop:Generator_DataSetName="ReportDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="CTHD_Report" msprop:Generator_RowEvHandlerName="CTHD_ReportRowChangeEventHandler" msprop:Generator_RowDeletedName="CTHD_ReportRowDeleted" msprop:Generator_RowDeletingName="CTHD_ReportRowDeleting" msprop:Generator_RowEvArgName="CTHD_ReportRowChangeEvent" msprop:Generator_TablePropName="CTHD_Report" msprop:Generator_RowChangedName="CTHD_ReportRowChanged" msprop:Generator_RowChangingName="CTHD_ReportRowChanging" msprop:Generator_TableClassName="CTHD_ReportDataTable" msprop:Generator_RowClassName="CTHD_ReportRow" msprop:Generator_TableVarName="tableCTHD_Report" msprop:Generator_UserTableName="CTHD_Report">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaChiTiet" msprop:Generator_ColumnPropNameInRow="MaChiTiet" msprop:Generator_ColumnPropNameInTable="MaChiTietColumn" msprop:Generator_ColumnVarNameInTable="columnMaChiTiet" msprop:Generator_UserColumnName="MaChiTiet" type="xs:string" minOccurs="0" />
+              <xs:element name="MaHoaDon" msprop:Generator_ColumnPropNameInRow="MaHoaDon" msprop:Generator_ColumnPropNameInTable="MaHoaDonColumn" msprop:Generator_ColumnVarNameInTable="columnMaHoaDon" msprop:Generator_UserColumnName="MaHoaDon" type="xs:string" minOccurs="0" />
+              <xs:element name="MaMon" msprop:Generator_ColumnPropNameInRow="MaMon" msprop:Generator_ColumnPropNameInTable="MaMonColumn" msprop:Generator_ColumnVarNameInTable="columnMaMon" msprop:Generator_UserColumnName="MaMon" type="xs:string" minOccurs="0" />
+              <xs:element name="TenMon" msprop:Generator_ColumnPropNameInRow="TenMon" msprop:Generator_ColumnPropNameInTable="TenMonColumn" msprop:Generator_ColumnVarNameInTable="columnTenMon" msprop:Generator_UserColumnName="TenMon" type="xs:string" minOccurs="0" />
+              <xs:element name="SoLuong" msprop:Generator_ColumnPropNameInRow="SoLuong" msprop:Generator_ColumnPropNameInTable="SoLuongColumn" msprop:Generator_ColumnVarNameInTable="columnSoLuong" msprop:Generator_UserColumnName="SoLuong" type="xs:string" minOccurs="0" />
+              <xs:element name="DonGia" msprop:Generator_ColumnPropNameInRow="DonGia" msprop:Generator_ColumnPropNameInTable="DonGiaColumn" msprop:Generator_ColumnVarNameInTable="columnDonGia" msprop:Generator_UserColumnName="DonGia" type="xs:string" minOccurs="0" />
+              <xs:element name="ThanhTien" msprop:Generator_ColumnPropNameInRow="ThanhTien" msprop:Generator_ColumnPropNameInTable="ThanhTienColumn" msprop:Generator_ColumnVarNameInTable="columnThanhTien" msprop:Generator_UserColumnName="ThanhTien" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
