@@ -1,6 +1,11 @@
-# Restaurant Management - Phần mềm quản lý nhà hàng
+# 🍔 Restaurant Management - Phần mềm Quản lý Nhà hàng
 
-Ứng dụng desktop quản lý nhà hàng với đầy đủ tính năng: đặt bàn, gọi món, tính tiền, in hóa đơn, thống kê doanh thu.
+[![.NET Framework](https://img.shields.io/badge/.NET%20Framework-4.7.2-blue?style=flat-square&logo=.net)](https://dotnet.microsoft.com/)
+[![C#](https://img.shields.io/badge/C%23-8.0-purple?style=flat-square&logo=csharp)](https://docs.microsoft.com/en-us/dotnet/csharp/)
+[![SQL Server](https://img.shields.io/badge/SQL%20Server-2012+-orange?style=flat-square&logo=sql)](https://www.microsoft.com/en-us/sql-server)
+[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
+
+Ứng dụng desktop quản lý nhà hàng toàn diện: đặt bàn, gọi món, tính tiền, in hóa đơn, thống kê doanh thu.
 
 ## Tính năng
 
@@ -11,6 +16,86 @@
 - Thống kê doanh thu theo ngày/tháng/năm
 - Quản lý khách hàng, nhân viên
 - Quản lý món ăn, danh mục món
+
+## Kiến trúc hệ thống
+
+Ứng dụng sử dụng kiến trúc **3-Layer Architecture**:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Presentation Layer (GUI)                  │
+│                      WinForms + Guna UI 2                    │
+└─────────────────────────┬───────────────────────────────────┘
+                          │
+┌─────────────────────────▼───────────────────────────────────┐
+│                  Business Logic Layer (BLL)                  │
+│  ├── QuanLyBanBLL     │  Thống kê doanh thu                │
+│  ├── QuanLyMonBLL     │  Xử lý voucher, khuyến mãi         │
+│  ├── QuanLyHoaDonBLL  │  Quản lý nhân viên, khách hàng     │
+│  └── QuanLyTaiKhoanBLL                                          │
+└─────────────────────────┬───────────────────────────────────┘
+                          │
+┌─────────────────────────▼───────────────────────────────────┐
+│                    Data Access Layer (DAL)                   │
+│  ├── DatabaseHelper    │  SQL Operations (ADO.NET)         │
+│  ├── ConnectDB          │  SQL Server Connection            │
+│  └── DataProvider                                                │
+└─────────────────────────┬───────────────────────────────────┘
+                          │
+┌─────────────────────────▼───────────────────────────────────┐
+│                      SQL Server Database                      │
+│        QL_NHAHANG (16 bảng: Ban, Mon, HoaDon,...)            │
+└─────────────────────────────────────────────────────────────┘
+```
+
+## Cấu trúc dự án
+
+```
+QuanLy_NhaHang/
+├── DAL/                     # Data Access Layer
+│   ├── DatabaseHelper.cs    # SQL Server operations
+│   ├── ConnectDB.cs         # Connection management
+│   └── DataProvider.cs      # Data provider utilities
+│
+├── BLL/                     # Business Logic Layer
+│   ├── QuanLyBanBLL.cs
+│   ├── QuanLyMonBLL.cs
+│   ├── QuanLyHoaDonBLL.cs
+│   ├── QuanLyTaiKhoanBLL.cs
+│   ├── QuanLyKhuyenMaiBLL.cs
+│   ├── QuanLyThongKeBLL.cs
+│   └── QuanLyKhachHangBLL.cs
+│
+├── DTO/                     # Data Transfer Objects
+│   ├── BanDTO.cs
+│   ├── MonDTO.cs
+│   ├── HoaDonDTO.cs
+│   ├── KhachHangDTO.cs
+│   ├── TaiKhoanDTO.cs
+│   └── KhuyenMaiDTO.cs
+│
+├── QUANLY_NHAHANG/          # GUI Layer (WinForms)
+│   ├── frmMain.cs           # Main form
+│   ├── frmDatBan.cs        # Đặt bàn
+│   ├── frmGoiMon.cs        # Gọi món
+│   ├── frmThanhToan.cs     # Thanh toán
+│   ├── frmQuanLyMon.cs     # Quản lý món ăn
+│   ├── frmBaoCao.cs        # Báo cáo thống kê
+│   └── Reports/            # Crystal Reports
+│
+└── CSDL_QUANLY_NHAHANG.sql  # Database script
+```
+
+## Công nghệ sử dụng
+
+| Component | Technology |
+|---|---|
+| **Framework** | .NET Framework 4.7.2 |
+| **Language** | C# 8.0 |
+| **UI** | WinForms + Guna UI 2 |
+| **Database** | SQL Server 2012+ |
+| **Reporting** | Crystal Reports |
+| **Data Access** | ADO.NET |
 
 ## Yêu cầu hệ thống
 
@@ -23,7 +108,7 @@
 
 ### 1. Cấu hình Database
 
-Chạy file SQL script trong thư mục gốc để tạo database:
+Chạy file SQL script để tạo database:
 
 - `CSDL_QUANLY_NHAHANG.sql` - Tạo cơ sở dữ liệu
 - Hoặc sử dụng SQL Server Management Studio
@@ -34,7 +119,7 @@ Mở file `App.config` trong `QuanLy_NhaHang/QUANLY_NHAHANG/` và sửa connecti
 
 ```xml
 <connectionStrings>
-    <add name="QL_NHAHANG" 
+    <add name="QL_NHAHANG"
          connectionString="Data Source=TEN_MAY;Initial Catalog=QL_NHAHANG;User ID=sa;Password=your_password"
          providerName="System.Data.SqlClient"/>
 </connectionStrings>
@@ -44,23 +129,12 @@ Mở file `App.config` trong `QuanLy_NhaHang/QUANLY_NHAHANG/` và sửa connecti
 
 Mở solution `QUANLY_NHAHANG.sln` trong Visual Studio.
 
-Nhấn F5 để chạy.
-
-## Kiến trúc
-
-Ứng dụng sử dụng kiến trúc 3 lớp:
-
-```
-├── DAL (Data Access Layer)     - Truy xuất database
-├── BLL (Business Logic Layer) - Xử lý nghiệp vụ  
-├── DTO (Data Transfer Object) - Đối tượng dữ liệu
-└── GUI                    - Giao diện WinForms
-```
+Nhấn **F5** để chạy.
 
 ## Các module chính
 
 | Module | Chức năng |
-|--------|----------|
+|---|---|
 | Đặt bàn | Đặt trước, chọn bàn, giờ |
 | Gọi món | Chọn món, thêm vào bàn |
 | Thanh toán | Tính tiền, in hóa đơn |
@@ -68,21 +142,16 @@ Nhấn F5 để chạy.
 | Thống kê | Báo cáo doanh thu |
 | Danh sách hóa đơn | Xem lịch sử thanh toán |
 
-## Công nghệ sử dụng
-
-- WinForms (.NET Framework 4.7.2)
-- SQL Server
-- Crystal Reports (In hóa đơn)
-- Guna UI 2 (UI Library)
-- ADO.NET
-
 ## Hướng dẫn sử dụng
 
 ### Đăng nhập
 
 Sử dụng tài khoản mặc định:
-- Quản lý: admin / admin
-- Nhân viên: nv01 / 123
+
+| Role | Username | Password |
+|---|---|---|
+| Quản lý | admin | admin |
+| Nhân viên | nv01 | 123 |
 
 ### Quy trình đặt bàn
 
@@ -108,4 +177,4 @@ Sử dụng tài khoản mặc định:
 
 ## License
 
-MIT License
+[MIT License](LICENSE)
